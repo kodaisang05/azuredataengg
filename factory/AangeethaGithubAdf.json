@@ -1,0 +1,9 @@
+{
+	"name": "AangeethaGithubAdf",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "828c40cb-4085-489f-9d6d-c56b340600d4",
+		"tenantId": "7e2eb276-caf0-4f46-96a5-b59a3c9b5e78"
+	}
+}
