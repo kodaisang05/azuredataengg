@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "copy_customer_pipeline_ex1",
 	"properties": {
 		"activities": [
 			{
