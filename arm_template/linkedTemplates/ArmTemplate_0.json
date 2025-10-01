@@ -1,0 +1,610 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "SangeethaTraining2024ADF"
+        },
+        "Sftp1_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'Sftp1'"
+        },
+        "adls_ls1_accountKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'accountKey' of 'adls_ls1'"
+        },
+        "sql_db_ls_param_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'sql_db_ls_param'"
+        },
+        "adls1_ls_accountKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'accountKey' of 'adls1_ls'"
+        },
+        "adls1_json_ls_accountKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'accountKey' of 'adls1_json_ls'"
+        },
+        "scd_sql_db_ls_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'scd_sql_db_ls'"
+        },
+        "sql_db_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'sql_db'"
+        },
+        "ls_adls_new_accountKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'accountKey' of 'ls_adls_new'"
+        },
+        "ls_json_new_accountKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'accountKey' of 'ls_json_new'"
+        },
+        "ls_sql_param_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'ls_sql_param'"
+        },
+        "LS_ADLS_ASS_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'LS_ADLS_ASS'"
+        },
+        "Sftp1_properties_typeProperties_host": {
+            "type": "string",
+            "defaultValue": "test.rebex.net"
+        },
+        "Sftp1_properties_typeProperties_userName": {
+            "type": "string",
+            "defaultValue": "demo"
+        },
+        "adls_ls1_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://sangeethatrain2024adls.dfs.core.windows.net/"
+        },
+        "AzureKeyVault1_properties_typeProperties_baseUrl": {
+            "type": "string",
+            "defaultValue": "https://dbpassword3.vault.azure.net/"
+        },
+        "LS_AZURE_KV_properties_typeProperties_baseUrl": {
+            "type": "string",
+            "defaultValue": "https://dbpassword3.vault.azure.net/"
+        },
+        "sql_db_ls_param_properties_typeProperties_server": {
+            "type": "string",
+            "defaultValue": "azuretraining2024sqlserver.database.windows.net"
+        },
+        "sql_db_ls_param_properties_typeProperties_database": {
+            "type": "string",
+            "defaultValue": "@{linkedService().db_name}"
+        },
+        "sql_db_ls_param_properties_typeProperties_userName": {
+            "type": "string",
+            "defaultValue": "admin2024"
+        },
+        "adls1_ls_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://sangeetha042694adls.dfs.core.windows.net/"
+        },
+        "adls1_json_ls_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://sangeetha042694adls.dfs.core.windows.net/"
+        },
+        "scd_sql_db_ls_properties_typeProperties_server": {
+            "type": "string",
+            "defaultValue": "sangeethazuresqldb.database.windows.net"
+        },
+        "scd_sql_db_ls_properties_typeProperties_database": {
+            "type": "string",
+            "defaultValue": "azure_train2024sql"
+        },
+        "scd_sql_db_ls_properties_typeProperties_userName": {
+            "type": "string",
+            "defaultValue": "admin2024"
+        },
+        "sql_db_properties_typeProperties_server": {
+            "type": "string",
+            "defaultValue": "sangeethazuresqldb.database.windows.net"
+        },
+        "sql_db_properties_typeProperties_database": {
+            "type": "string",
+            "defaultValue": "azure_train2024sql"
+        },
+        "sql_db_properties_typeProperties_userName": {
+            "type": "string",
+            "defaultValue": "admin2024"
+        },
+        "Rest_ls_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://restcountries.com/v3.1/all"
+        },
+        "rest_ls_param_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://restcountries.com/v3.1/name"
+        },
+        "ls_adls_new_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://sangeethatrain2024adls.dfs.core.windows.net/"
+        },
+        "ls_json_new_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://sangeethatrain2024adls.dfs.core.windows.net/"
+        },
+        "ls_rest_new_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://restcountries.com/v3.1/name/"
+        },
+        "ls_sql_param_properties_typeProperties_server": {
+            "type": "string",
+            "defaultValue": "sangeethazuresqldb.database.windows.net"
+        },
+        "ls_sql_param_properties_typeProperties_database": {
+            "type": "string",
+            "defaultValue": "azure_train2024sql"
+        },
+        "ls_sql_param_properties_typeProperties_userName": {
+            "type": "string",
+            "defaultValue": "admin2024"
+        },
+        "LS_ADLS_ASS_properties_typeProperties_server": {
+            "type": "string",
+            "defaultValue": "sangeethazuresqldb.database.windows.net"
+        },
+        "LS_ADLS_ASS_properties_typeProperties_database": {
+            "type": "string",
+            "defaultValue": "azure_train2024sql"
+        },
+        "LS_ADLS_ASS_properties_typeProperties_userName": {
+            "type": "string",
+            "defaultValue": "admin2024"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/myselfhostedIR')]",
+            "type": "Microsoft.DataFactory/factories/integrationRuntimes",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "type": "SelfHosted",
+                "typeProperties": {}
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SHintegrationRuntime1')]",
+            "type": "Microsoft.DataFactory/factories/integrationRuntimes",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "type": "SelfHosted",
+                "typeProperties": {}
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/Sftp1')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "Sftp",
+                "typeProperties": {
+                    "host": "[parameters('Sftp1_properties_typeProperties_host')]",
+                    "port": 22,
+                    "skipHostKeyValidation": true,
+                    "authenticationType": "Basic",
+                    "userName": "[parameters('Sftp1_properties_typeProperties_userName')]",
+                    "password": {
+                        "type": "SecureString",
+                        "value": "[parameters('Sftp1_password')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/adls_ls1')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobFS",
+                "typeProperties": {
+                    "url": "[parameters('adls_ls1_properties_typeProperties_url')]",
+                    "accountKey": {
+                        "type": "SecureString",
+                        "value": "[parameters('adls_ls1_accountKey')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/AzureKeyVault1')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureKeyVault",
+                "typeProperties": {
+                    "baseUrl": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LS_AZURE_KV')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureKeyVault",
+                "typeProperties": {
+                    "baseUrl": "[parameters('LS_AZURE_KV_properties_typeProperties_baseUrl')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/sql_db_ls_param')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "parameters": {
+                    "db_name": {
+                        "type": "string"
+                    }
+                },
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "server": "[parameters('sql_db_ls_param_properties_typeProperties_server')]",
+                    "database": "[parameters('sql_db_ls_param_properties_typeProperties_database')]",
+                    "encrypt": "mandatory",
+                    "trustServerCertificate": false,
+                    "authenticationType": "SQL",
+                    "userName": "[parameters('sql_db_ls_param_properties_typeProperties_userName')]",
+                    "password": {
+                        "type": "SecureString",
+                        "value": "[parameters('sql_db_ls_param_password')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/adls1_ls')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobFS",
+                "typeProperties": {
+                    "url": "[parameters('adls1_ls_properties_typeProperties_url')]",
+                    "accountKey": {
+                        "type": "SecureString",
+                        "value": "[parameters('adls1_ls_accountKey')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/adls1_json_ls')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobFS",
+                "typeProperties": {
+                    "url": "[parameters('adls1_json_ls_properties_typeProperties_url')]",
+                    "accountKey": {
+                        "type": "SecureString",
+                        "value": "[parameters('adls1_json_ls_accountKey')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/scd_sql_db_ls')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "server": "[parameters('scd_sql_db_ls_properties_typeProperties_server')]",
+                    "database": "[parameters('scd_sql_db_ls_properties_typeProperties_database')]",
+                    "encrypt": "mandatory",
+                    "trustServerCertificate": false,
+                    "authenticationType": "SQL",
+                    "userName": "[parameters('scd_sql_db_ls_properties_typeProperties_userName')]",
+                    "password": {
+                        "type": "SecureString",
+                        "value": "[parameters('scd_sql_db_ls_password')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/sql_db')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "server": "[parameters('sql_db_properties_typeProperties_server')]",
+                    "database": "[parameters('sql_db_properties_typeProperties_database')]",
+                    "encrypt": "mandatory",
+                    "trustServerCertificate": false,
+                    "authenticationType": "SQL",
+                    "userName": "[parameters('sql_db_properties_typeProperties_userName')]",
+                    "password": {
+                        "type": "SecureString",
+                        "value": "[parameters('sql_db_password')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/Rest_ls')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "RestService",
+                "typeProperties": {
+                    "url": "[parameters('Rest_ls_properties_typeProperties_url')]",
+                    "enableServerCertificateValidation": true,
+                    "authenticationType": "Anonymous"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/rest_ls_param')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "RestService",
+                "typeProperties": {
+                    "url": "[parameters('rest_ls_param_properties_typeProperties_url')]",
+                    "enableServerCertificateValidation": true,
+                    "authenticationType": "Anonymous"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ls_adls_new')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobFS",
+                "typeProperties": {
+                    "url": "[parameters('ls_adls_new_properties_typeProperties_url')]",
+                    "accountKey": {
+                        "type": "SecureString",
+                        "value": "[parameters('ls_adls_new_accountKey')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ls_json_new')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobFS",
+                "typeProperties": {
+                    "url": "[parameters('ls_json_new_properties_typeProperties_url')]",
+                    "accountKey": {
+                        "type": "SecureString",
+                        "value": "[parameters('ls_json_new_accountKey')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ls_rest_new')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "RestService",
+                "typeProperties": {
+                    "url": "[parameters('ls_rest_new_properties_typeProperties_url')]",
+                    "enableServerCertificateValidation": true,
+                    "authenticationType": "Anonymous"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ls_sql_param')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "server": "[parameters('ls_sql_param_properties_typeProperties_server')]",
+                    "database": "[parameters('ls_sql_param_properties_typeProperties_database')]",
+                    "encrypt": "mandatory",
+                    "trustServerCertificate": true,
+                    "authenticationType": "SQL",
+                    "userName": "[parameters('ls_sql_param_properties_typeProperties_userName')]",
+                    "password": {
+                        "type": "SecureString",
+                        "value": "[parameters('ls_sql_param_password')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LS_ADLS_ASS')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "server": "[parameters('LS_ADLS_ASS_properties_typeProperties_server')]",
+                    "database": "[parameters('LS_ADLS_ASS_properties_typeProperties_database')]",
+                    "encrypt": "mandatory",
+                    "trustServerCertificate": true,
+                    "authenticationType": "SQL",
+                    "userName": "[parameters('LS_ADLS_ASS_properties_typeProperties_userName')]",
+                    "password": {
+                        "type": "SecureString",
+                        "value": "[parameters('LS_ADLS_ASS_password')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/set variable example')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "Set variable1",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "policy": {
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "Time",
+                            "value": {
+                                "value": "@utcNow()",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "Set variable2",
+                        "type": "SetVariable",
+                        "dependsOn": [
+                            {
+                                "activity": "Set variable1",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "day",
+                            "value": {
+                                "value": "@dayOfMonth(variables('Time'))",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {}
+                },
+                "variables": {
+                    "Time": {
+                        "type": "String"
+                    },
+                    "day of week": {
+                        "type": "String"
+                    },
+                    "day": {
+                        "type": "Integer"
+                    }
+                },
+                "annotations": [],
+                "lastPublishTime": "2024-12-04T16:08:31Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/append_variable_ex')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "Append variable1",
+                        "type": "AppendVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "names",
+                            "value": {
+                                "value": "sangeetha,vihaan,adhiran,manikandan",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "Set variable1",
+                        "type": "SetVariable",
+                        "dependsOn": [
+                            {
+                                "activity": "Append variable1",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "files",
+                            "value": {
+                                "value": "@variables('names')",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {}
+                },
+                "variables": {
+                    "file_names": {
+                        "type": "Array"
+                    },
+                    "files": {
+                        "type": "Array"
+                    },
+                    "names": {
+                        "type": "Array"
+                    }
+                },
+                "annotations": [],
+                "lastPublishTime": "2024-12-04T16:39:36Z"
+            },
+            "dependsOn": []
+        }
+    ]
+}
