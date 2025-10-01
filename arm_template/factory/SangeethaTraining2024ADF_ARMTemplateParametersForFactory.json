@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "value": "SangeethaTraining2024ADF"
+        },
+        "dataFactory_properties_globalParameters_RootPath1_value": {
+            "value": "landing/Parameter_Example/"
+        },
+        "dataFactory_location": {
+            "value": "eastus2"
+        },
+        "dataFactory_identity_type": {
+            "value": "SystemAssigned"
+        }
+    }
+}

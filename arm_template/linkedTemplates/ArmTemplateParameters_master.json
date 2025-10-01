@@ -1,0 +1,168 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "value": "SangeethaTraining2024ADF"
+        },
+        "Sftp1_password": {
+            "value": ""
+        },
+        "adls_ls1_accountKey": {
+            "value": ""
+        },
+        "sql_db_ls_param_password": {
+            "value": ""
+        },
+        "adls1_ls_accountKey": {
+            "value": ""
+        },
+        "adls1_json_ls_accountKey": {
+            "value": ""
+        },
+        "scd_sql_db_ls_password": {
+            "value": ""
+        },
+        "sql_db_password": {
+            "value": ""
+        },
+        "ls_adls_new_accountKey": {
+            "value": ""
+        },
+        "ls_SqlServer_onprim_password": {
+            "value": ""
+        },
+        "ls_json_new_accountKey": {
+            "value": ""
+        },
+        "ls_sql_param_password": {
+            "value": ""
+        },
+        "LS_ADLS_ASS_password": {
+            "value": ""
+        },
+        "Schedule_Trigger_every1minutute_properties_ass7_two_triggers_pipeline_parameters_sql_table_name": {
+            "value": "product"
+        },
+        "Schedule_Trigger_every1minutute_properties_ass7_two_triggers_pipeline_parameters_folder_name": {
+            "value": "trigger_product"
+        },
+        "storage_event_trigger1_properties_typeProperties_scope": {
+            "value": "/subscriptions/c5f5b22f-b46d-498a-b0a0-35c1ebdf17e7/resourceGroups/SangeethaTraining2024/providers/Microsoft.Storage/storageAccounts/sangeethatrain2024adls"
+        },
+        "Sftp1_properties_typeProperties_host": {
+            "value": "test.rebex.net"
+        },
+        "Sftp1_properties_typeProperties_userName": {
+            "value": "demo"
+        },
+        "adls_ls1_properties_typeProperties_url": {
+            "value": "https://sangeethatrain2024adls.dfs.core.windows.net/"
+        },
+        "AzureKeyVault1_properties_typeProperties_baseUrl": {
+            "value": "https://dbpassword3.vault.azure.net/"
+        },
+        "LS_AZURE_KV_properties_typeProperties_baseUrl": {
+            "value": "https://dbpassword3.vault.azure.net/"
+        },
+        "sql_db_ls_param_properties_typeProperties_server": {
+            "value": "azuretraining2024sqlserver.database.windows.net"
+        },
+        "sql_db_ls_param_properties_typeProperties_database": {
+            "value": "@{linkedService().db_name}"
+        },
+        "sql_db_ls_param_properties_typeProperties_userName": {
+            "value": "admin2024"
+        },
+        "sql_db1_ls_properties_typeProperties_server": {
+            "value": "azuretraining2024sqlserver.database.windows.net"
+        },
+        "sql_db1_ls_properties_typeProperties_database": {
+            "value": "azure_train2024"
+        },
+        "sql_db1_ls_properties_typeProperties_userName": {
+            "value": "admin2024"
+        },
+        "LS_KV1_properties_typeProperties_server": {
+            "value": "azuretraining2024sqlserver.database.windows.net"
+        },
+        "LS_KV1_properties_typeProperties_database": {
+            "value": "azure_train2024"
+        },
+        "LS_KV1_properties_typeProperties_userName": {
+            "value": "admin2024"
+        },
+        "adls1_ls_properties_typeProperties_url": {
+            "value": "https://sangeetha042694adls.dfs.core.windows.net/"
+        },
+        "adls1_json_ls_properties_typeProperties_url": {
+            "value": "https://sangeetha042694adls.dfs.core.windows.net/"
+        },
+        "scd_sql_db_ls_properties_typeProperties_server": {
+            "value": "sangeethazuresqldb.database.windows.net"
+        },
+        "scd_sql_db_ls_properties_typeProperties_database": {
+            "value": "azure_train2024sql"
+        },
+        "scd_sql_db_ls_properties_typeProperties_userName": {
+            "value": "admin2024"
+        },
+        "sql_db_properties_typeProperties_server": {
+            "value": "sangeethazuresqldb.database.windows.net"
+        },
+        "sql_db_properties_typeProperties_database": {
+            "value": "azure_train2024sql"
+        },
+        "sql_db_properties_typeProperties_userName": {
+            "value": "admin2024"
+        },
+        "Rest_ls_properties_typeProperties_url": {
+            "value": "https://restcountries.com/v3.1/all"
+        },
+        "rest_ls_param_properties_typeProperties_url": {
+            "value": "https://restcountries.com/v3.1/name"
+        },
+        "ls_adls_new_properties_typeProperties_url": {
+            "value": "https://sangeethatrain2024adls.dfs.core.windows.net/"
+        },
+        "ls_SqlServer_onprim_properties_typeProperties_server": {
+            "value": "DESKTOP-015FQ1D\\SQLEXPRESS"
+        },
+        "ls_SqlServer_onprim_properties_typeProperties_database": {
+            "value": "Test_Db"
+        },
+        "ls_SqlServer_onprim_properties_typeProperties_userName": {
+            "value": "adfuser4"
+        },
+        "ls_json_new_properties_typeProperties_url": {
+            "value": "https://sangeethatrain2024adls.dfs.core.windows.net/"
+        },
+        "ls_rest_new_properties_typeProperties_url": {
+            "value": "https://restcountries.com/v3.1/name/"
+        },
+        "ls_sql_param_properties_typeProperties_server": {
+            "value": "sangeethazuresqldb.database.windows.net"
+        },
+        "ls_sql_param_properties_typeProperties_database": {
+            "value": "azure_train2024sql"
+        },
+        "ls_sql_param_properties_typeProperties_userName": {
+            "value": "admin2024"
+        },
+        "LS_ADLS_ASS_properties_typeProperties_server": {
+            "value": "sangeethazuresqldb.database.windows.net"
+        },
+        "LS_ADLS_ASS_properties_typeProperties_database": {
+            "value": "azure_train2024sql"
+        },
+        "LS_ADLS_ASS_properties_typeProperties_userName": {
+            "value": "admin2024"
+        },
+        "containerUri": {
+            "value": ""
+        },
+        "containerSasToken": {
+            "value": ""
+        }
+    }
+}

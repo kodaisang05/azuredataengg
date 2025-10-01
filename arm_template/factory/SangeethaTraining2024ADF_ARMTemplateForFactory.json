@@ -1,0 +1,48 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "SangeethaTraining2024ADF"
+        },
+        "dataFactory_properties_globalParameters_RootPath1_value": {
+            "type": "string",
+            "defaultValue": "landing/Parameter_Example/"
+        },
+        "dataFactory_location": {
+            "type": "string",
+            "defaultValue": "eastus2"
+        },
+        "dataFactory_identity_type": {
+            "type": "string",
+            "defaultValue": "SystemAssigned"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[parameters('factoryName')]",
+            "type": "Microsoft.DataFactory/factories",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "globalParameters": {
+                    "RootPath1": {
+                        "type": "string",
+                        "value": "[parameters('dataFactory_properties_globalParameters_RootPath1_value')]"
+                    }
+                }
+            },
+            "dependsOn": [],
+            "location": "[parameters('dataFactory_location')]",
+            "identity": {
+                "type": "[parameters('dataFactory_identity_type')]",
+                "principalId": "b7d1e8ce-9373-4993-b99a-3d1bc0c7a134",
+                "tenantId": "7e2eb276-caf0-4f46-96a5-b59a3c9b5e78"
+            }
+        }
+    ]
+}
